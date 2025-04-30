@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: kumaradji/postgres-db:latest
+    env_file:
+      - ./.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  web:
+    image: kumaradji/django-app:latest
+    env_file:
+      - ./.env
+    volumes:
+      - ./myproject:/app
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+    command: bash -c "python manage.py migrate && gunicorn myproject.wsgi:application --bind 0.0.0.0:8000"
+
+  nginx:
+    image: kumaradji/nginx-server:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/static:/static
+    depends_on:
+      - web
+    networks:
+      - mynetwork
+
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  postgres_data:
