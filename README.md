@@ -46,14 +46,68 @@ docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --noinput
 ```
 
-
-
-- ***Сборка***
-`npm run build` - ***создает оптимизированную сборку в директории*** build/
-
+### Дополнительные команды
 ---
+Остановить и удалить контейнеры
+```
+docker-compose down
+```
+Перезапустить контейнеры
+```
+docker-compose restart
+```
+При ошибках если исполняемый файл в контейнере имеет неверный формат для данной архитектуры.
+```
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+```
 
-### Логины и Пароли для входа находятся в файле password
+###Структура проекта
+---
+```
+django_docker_g4/
+├── docker-compose.yml
+├── .env
+├── .env.example
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── myproject/
+│   ├── myproject/
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── wsgi.py
+│   ├── static/
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   ├── manage.py
+├── nginx/
+│   ├── conf.d/
+│   │   └── default.conf
+│   ├── static/
+│   ├── Dockerfile
+│   └── nginx.conf
+├── postgres/
+│   └── Dockerfile
+├── venv/
+│   ├── bin/
+│   ├── include/
+│   ├── lib/
+│   └── pyvenv.cfg
+```
+
+Описание файлов
+
+    docker-compose.yml: Файл конфигурации Docker Compose.
+    .env: Файл с переменными окружения.
+    myproject/: Директория с Django проектом.
+    nginx/: Директория с конфигурацией Nginx.
+    postgres/: Директория с Dockerfile для PostgreSQL.
+    venv/: Виртуальное окружение Python (опционально).
+
 
 ---
 
