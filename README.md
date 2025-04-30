@@ -63,7 +63,7 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-###Структура проекта
+### Структура проекта
 ---
 ```
 django_docker_g4/
@@ -101,12 +101,12 @@ django_docker_g4/
 
 Описание файлов
 
-    docker-compose.yml: Файл конфигурации Docker Compose.
-    .env: Файл с переменными окружения.
-    myproject/: Директория с Django проектом.
-    nginx/: Директория с конфигурацией Nginx.
-    postgres/: Директория с Dockerfile для PostgreSQL.
-    venv/: Виртуальное окружение Python (опционально).
+    ```docker-compose.yml```: Файл конфигурации Docker Compose.
+    ```.env```: Файл с переменными окружения.
+    ```myproject/```: Директория с Django проектом.
+    ```nginx/```: Директория с конфигурацией Nginx.
+    ```postgres/```: Директория с Dockerfile для PostgreSQL.
+    ```venv/```: Виртуальное окружение Python (опционально).
 
 
 ---
