@@ -7,6 +7,10 @@
 
 ### Установка:
 
+1. Клонирование репозитория 
+
+```git clone [https://github.com/OkulusDev/Oxygen.git](https://github.com/ViktorKula/django-docker-g4/edit/main/README.md)```
+
 - ***Установка зависимостей*** `npm install`
 
 - ***Запуск проекта локально*** `npm start`
