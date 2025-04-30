@@ -10,7 +10,7 @@
 1. Клонирование репозитория 
 
 ```
-`git clone https://github.com/ViktorKula/django-docker-g4.git`
+git clone https://github.com/ViktorKula/django-docker-g4.git
 cd django-docker-g4
 ```
 2. Создайте и настройте виртуальное окружение (опционально)
