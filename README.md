@@ -11,11 +11,42 @@
 
 ```
 git clone [https://github.com/OkulusDev/Oxygen.git](https://github.com/ViktorKula/django-docker-g4/edit/main/README.md)
+cd django-docker-g4
+```
+2. Создайте и настройте виртуальное окружение (опционально)
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+3. Запустите Docker Compose
+   
+```
+docker-compose up -d
+```
+4. Проверьте состояние контейнеров
+
+```
+docker-compose ps
+```
+5. Выполните миграции базы данных
+
+```
+docker-compose exec web python manage.py migrate
+```
+6. Создайте суперпользователя (если необходимо)
+
+```
+docker-compose exec web python manage.py createsuperuser
+```
+7. Соберите статические файлы
+
+```
+docker-compose exec web python manage.py collectstatic --noinput
 ```
 
-- ***Установка зависимостей*** `npm install`
 
-- ***Запуск проекта локально*** `npm start`
 
 - ***Сборка***
 `npm run build` - ***создает оптимизированную сборку в директории*** build/
